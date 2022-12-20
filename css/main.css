@@ -10447,6 +10447,9 @@ h2 {
   font-weight: 900;
   color: var(--Gunmetal);
 }
+h2 span {
+  font-weight: 500;
+}
 
 h3 {
   font-size: 1.5rem;
@@ -10540,9 +10543,6 @@ article .article_container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-}
-article .article_container h2 span {
-  font-weight: 500;
 }
 article .article_container p {
   max-width: 70ch;
@@ -10731,3 +10731,7 @@ footer .Hotel ul a {
 
 /* pages */
 .boende {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}/*# sourceMappingURL=main.css.map */
