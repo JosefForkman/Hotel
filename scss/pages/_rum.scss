@@ -1,0 +1,15 @@
+.rum {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    
+    .introduktion {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        img {
+            margin-bottom: .5rem;
+        }
+    }
+}

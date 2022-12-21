@@ -8,59 +8,7 @@
         <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.0.0/index.global.min.js"></script>
         <script>
 
-            document.addEventListener('DOMContentLoaded', function() {
-                let calendarEl = document.getElementById('calendar');
-                let calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                selectable: true,
-                selectOverlap: false,
-                select: ({endStr, startStr, end, start}) => {
-                    console.log({endStr, startStr, end, start});
-                },
-                locale: 'sv',
-                firstDay: 1, // Måndag
-                validRange: {
-                    start: '2023-01-01',
-                    end: '2023-02-01'
-                },
-                aspectRatio: 1,
-                buttonText: {
-                    today:    'Idag',
-                    month:    'Månad',
-                    week:     'vecka',
-                    day:      'dag',
-                    list:     'list'
-                },
-                headerToolbar: {
-                    left: 'title',
-                    center: '',
-                    right: ''
-                },
-                events: [
-                    {
-                    title:  'Bokad',
-                    start:  '2023-01-20T16:11:36.748Z',
-                    end: '2023-01-22T16:11:36.748Z',
-                    allDay: true
-                    },
-                    {
-                    title:  'Bokad',
-                    start:  '2023-01-01',
-                    end: '2023-01-06',
-                    allDay: true
-                    },
-                    {
-                    title:  'Bokad',
-                    start:  '2023-01-08',
-                    end: '2023-01-08',
-                    allDay: true
-                    },
-                    // other events here...
-                ],
-                eventColor: 'var(--Amaranth-Purplen)'
-                });
-                calendar.render();
-            });
+
 
     </script>
 
@@ -83,9 +31,9 @@
 
         </header>
 
-        <main class="pageMargin">
-            <section>
-                <a href="boende.php"><i class="fa-solid fa-angle-left"></i> Leta vidare</a>
+        <main class="pageMargin rum">
+            <section class="introduktion">
+                <a class="text-Russian-Green" href="boende.php"><i class="fa-solid fa-angle-left"></i> Leta vidare</a>
                 <img src="img/luxury.jpg" alt="">
                 <h2>Två rum <span>luxury</span></h2>
                 <p>Lorem ipsum dolor sit amet consectetur. Laoreet ac diam sit sit pharetra volutpat. Erat a tincidunt vitae at molestie elit ut. Duis dolor vel id amet volutpat orci ultricies etiam ultrices. Sollicitudin neque sapien eget sodales luctus maecenas feugiat. Arcu nisl lorem pharetra auctor. Sit nibh aliquet a amet netus. Etiam neque mi eu ultricies.</p>
@@ -94,6 +42,12 @@
             <section>
                 <div style="font-size: 13px;" id="calendar"></div>
             </section>
+
+            <div class="boka bg-Russian-Green">
+                <h2 class="text-Snow">500kr / natt</h2>
+                <p class="text-Snow">1 Jan - 5 Jan</p>
+                <button class="btn bg-Amaranth-Purplen text-Snow">Boka</button>
+            </div>
         </main>
 
         <footer>
@@ -121,5 +75,6 @@
             </div>
         </footer>
         <script src="js/index.js"></script>
+        <script src="js/fullcalendar.js"></script>
     </body>
 </html>

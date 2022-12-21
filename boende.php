@@ -31,8 +31,8 @@
                     <h2>Två rum <span>luxury</span></h2>
                     <p>Lorem ipsum dolor sit amet consectetur. Laoreet ac diam sit sit pharetra volutpat. Erat a tincidunt vitae at molestie elit ut. Duis dolor vel id amet volutpat orci ultricies etiam ultrices. Sollicitudin neque sapien eget sodales luctus maecenas feugiat. Arcu nisl lorem pharetra auctor. Sit nibh aliquet a amet netus. Etiam neque mi eu ultricies.</p>
                     <div class="button-container">
-                        <button class="btn bg-Russian-Green text-Snow">Boka rum</button>
-                        <button class="btn bg-Russian-Green text-Snow">Läs mer</button>
+                        <a href="rum.php" class="btn bg-Russian-Green text-Snow">Boka rum</a>
+                        <a href="rum.php" class="btn bg-Russian-Green text-Snow">Läs mer</a>
                     </div>
                 </div>
             </article>
@@ -43,8 +43,8 @@
                     <h2>Två rum <span>standard</span></h2>
                     <p>Lorem ipsum dolor sit amet consectetur. Laoreet ac diam sit sit pharetra volutpat. Erat a tincidunt vitae at molestie elit ut. Duis dolor vel id amet volutpat orci ultricies etiam ultrices. Sollicitudin neque sapien eget sodales luctus maecenas feugiat. Arcu nisl lorem pharetra auctor. Sit nibh aliquet a amet netus. Etiam neque mi eu ultricies.</p>
                     <div class="button-container">
-                        <button class="btn bg-Russian-Green text-Snow">Boka rum</button>
-                        <button class="btn bg-Russian-Green text-Snow">Läs mer</button>
+                        <a href="rum.php" class="btn bg-Russian-Green text-Snow">Boka rum</a>
+                        <a href="rum.php" class="btn bg-Russian-Green text-Snow">Läs mer</a>
                     </div>
                 </div>
             </article>
@@ -55,8 +55,8 @@
                     <h2>Två rum <span>budget</span></h2>
                     <p>Lorem ipsum dolor sit amet consectetur. Laoreet ac diam sit sit pharetra volutpat. Erat a tincidunt vitae at molestie elit ut. Duis dolor vel id amet volutpat orci ultricies etiam ultrices. Sollicitudin neque sapien eget sodales luctus maecenas feugiat. Arcu nisl lorem pharetra auctor. Sit nibh aliquet a amet netus. Etiam neque mi eu ultricies.</p>
                     <div class="button-container">
-                        <button class="btn bg-Russian-Green text-Snow">Boka rum</button>
-                        <button class="btn bg-Russian-Green text-Snow">Läs mer</button>
+                        <a href="rum.php" class="btn bg-Russian-Green text-Snow">Boka rum</a>
+                        <a href="rum.php" class="btn bg-Russian-Green text-Snow">Läs mer</a>
                     </div>
                 </div>
             </article>
