@@ -13,7 +13,7 @@ const fullCalendarOpt = {
         start: '2023-01-01',
         end: '2023-02-01'
     },
-    aspectRatio: 1,
+    aspectRatio: 1.2,
     buttonText: {
         today:    'Idag',
         month:    'Månad',

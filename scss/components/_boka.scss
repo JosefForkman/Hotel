@@ -12,4 +12,10 @@
         grid-column: 2 / 3;
         align-self: center;
     }
+
+    @media screen and (min-width: 810px) {
+        position: static;
+        align-self: baseline;
+        margin-top: 2.6rem;
+    }
 }

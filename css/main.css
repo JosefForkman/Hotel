@@ -10588,6 +10588,13 @@ article .button-container button {
   grid-column: 2/3;
   align-self: center;
 }
+@media screen and (min-width: 810px) {
+  .boka {
+    position: static;
+    align-self: baseline;
+    margin-top: 2.6rem;
+  }
+}
 
 /* layout */
 header {
@@ -10753,15 +10760,51 @@ footer .Hotel ul a {
 }
 
 .rum {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 2rem;
 }
 .rum .introduktion {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
+  row-gap: 1rem;
 }
 .rum .introduktion img {
   margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+}
+@media screen and (min-width: 810px) {
+  .rum {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .rum .introduktion {
+    grid-column: 1/-1;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto 1fr;
+  }
+  .rum .introduktion a {
+    grid-column: 1/-1;
+  }
+  .rum .introduktion img {
+    grid-row: span 2;
+    margin-bottom: 0.5rem;
+  }
+}
+@media screen and (min-width: 1100px) {
+  .rum {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .rum .boka {
+    grid-column: 3/-1;
+    justify-self: end;
+    -moz-column-gap: 90px;
+         column-gap: 90px;
+  }
+  .rum .calendar {
+    grid-column: span 2;
+  }
 }/*# sourceMappingURL=main.css.map */
