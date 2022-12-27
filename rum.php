@@ -6,11 +6,6 @@
         <link rel='stylesheet' href='css/main.css'>
 
         <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.0.0/index.global.min.js"></script>
-        <script>
-
-
-
-    </script>
 
         <title>Hotel</title>
     </head>
@@ -34,7 +29,7 @@
             <div class="boka bg-Russian-Green">
                 <h2 class="text-Snow">500kr / natt</h2>
                 <p class="text-Snow">1 Jan - 5 Jan</p>
-                <button class="btn bg-Amaranth-Purplen text-Snow">Boka</button>
+                <a href="check-out.php" class="btn bg-Amaranth-Purplen text-Snow">Boka</a>
             </div>
         </main>
 

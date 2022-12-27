@@ -1,0 +1,24 @@
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .input-grope {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+    }
+}
+
+
+input {
+    background-color: transparent;
+    border: 3px solid var(--Russian-Green);
+    border-radius: .5em;
+    padding: 1em .5em;
+    outline: none;
+
+    &:focus {
+        border-color: var(--Amaranth-Purplen);
+    }
+}
