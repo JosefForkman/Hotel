@@ -1,6 +1,6 @@
 <?php
     class Dbh {
-        public function connect (): object {
+        public function connect (string $dbName) {
             try {
                 # Skapar variablar för DB
                 $dbPath = __DIR__ . '/' . $dbName;
