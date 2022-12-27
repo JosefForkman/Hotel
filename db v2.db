@@ -1,0 +1,91 @@
+-- -----------------------------------------------------
+-- Table `room`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `room`;
+
+CREATE TABLE IF NOT EXISTS room (
+  id INTEGER NOT NULL PRIMARY KEY,
+  name VARCHAR(45) NOT NULL,
+  description MEDIUMTEXT NOT NULL,
+  price INT NOT NULL DEFAULT 0
+);
+
+-- -----------------------------------------------------
+-- Table `reservation`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `reservation`;
+
+CREATE TABLE IF NOT EXISTS `reservation` (
+  id INTEGER NOT NULL PRIMARY KEY,
+  `arrival_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `departure_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `roomId` INT NOT NULL,
+
+  FOREIGN KEY (roomId)
+       REFERENCES room (id)
+)
+
+
+-- -----------------------------------------------------
+-- Table `imgage`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `imgage`;
+
+CREATE TABLE IF NOT EXISTS `imgage` (
+  id INTEGER NOT NULL PRIMARY KEY,
+  `url` VARCHAR(120) NOT NULL,
+  `alt` VARCHAR(256) NULL,
+  `roomId` INT NOT NULL,
+
+  FOREIGN KEY (roomId)
+       REFERENCES room (id)
+)
+
+
+-- -----------------------------------------------------
+-- Table `feature`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `feature`;
+
+CREATE TABLE IF NOT EXISTS `feature` (
+  id INTEGER NOT NULL PRIMARY KEY,
+  `name` VARCHAR(45) NOT NULL,
+  `description` MEDIUMTEXT NOT NULL,
+  `price` INT NOT NULL DEFAULT 0,
+)
+
+
+-- -----------------------------------------------------
+-- Table `features`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `features`;
+
+CREATE TABLE IF NOT EXISTS `features` (
+    id INTEGER NOT NULL PRIMARY KEY,
+    `featureId` INT NOT NULL,
+    `roomId` INT NOT NULL,
+
+    FOREIGN KEY (roomId)
+       REFERENCES room (id),
+    FOREIGN KEY (featureId)
+       REFERENCES feature (id)
+)
+
+-- -----------------------------------------------------
+-- Table `discount`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `discount`;
+
+CREATE TABLE IF NOT EXISTS `discount` (
+   id INTEGER NOT NULL PRIMARY KEY,
+  `name` VARCHAR(120) NOT NULL,
+  `amount` VARCHAR(45) NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+)
