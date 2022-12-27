@@ -13,41 +13,53 @@
         ?>
 
         <main class="pageMargin check-out">
-            <img src="img/luxury.jpg" alt="">
-
-            <table>
-                <tbody class="text-Amaranth-Purplen">
-                    <tr>
-                        <th>Rum</th>
-                        <td>Lyxury</td>
-                    </tr>
-                    <tr>
-                        <th>Pris</th>
-                        <td>500kr / natt</td>
-                    </tr>
-                    <tr>
-                        <th>Antal nätter</th>
-                        <td>4st</td>
-                    </tr>
-                    <tr>
-                        <th>Rabatt</th>
-                        <td>0kr</td>
-                    </tr>
-                </tbody>
-                <tfoot class="text-Amaranth-Purplen">
-                        <th>Summa</th>
-                        <td>2 000kr</td>
-                </tfoot>
-            </table>
+            <div>
+                <img src="img/luxury.jpg" alt="">
+                <table>
+                    <tbody class="text-Amaranth-Purplen">
+                        <tr>
+                            <th>Rum</th>
+                            <td>Lyxury</td>
+                        </tr>
+                        <tr>
+                            <th>Pris</th>
+                            <td>500kr / natt</td>
+                        </tr>
+                        <tr>
+                            <th>Antal nätter</th>
+                            <td>4st</td>
+                        </tr>
+                        <tr>
+                            <th>Rabatt</th>
+                            <td>0kr</td>
+                        </tr>
+                    </tbody>
+                    <tfoot class="text-Amaranth-Purplen">
+                            <th>Summa</th>
+                            <td>2 000kr</td>
+                    </tfoot>
+                </table>
+            </div>
 
             <form>
                 <div class="input-grope">
                     <label for="name">Namn</label>
-                    <input type="text" class="text-Gunmetal" id="name" placeholder="Kinetic Kudu">
+                    <input
+                        type="text"
+                        class="text-Gunmetal"
+                        id="name"
+                        required
+                        placeholder="Kinetic Kudu">
                 </div>
                 <div class="input-grope">
                     <label for="perNr">Person nr (API key)</label>
-                    <input type="text" class="text-Gunmetal" id="perNr" placeholder="XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX">
+                    <input
+                        type="text"
+                        class="text-Gunmetal"
+                        id="perNr"
+                        required
+                        pattern="/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/"
+                        placeholder="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX">
                 </div>
                 <div class="input-grope">
                     <label for="discount">Rabatt</label>

@@ -10464,6 +10464,7 @@ label {
 
 input {
   font-family: "Roboto", sans-serif;
+  font-size: 0.85rem;
 }
 
 nav ul a {
@@ -10845,12 +10846,16 @@ input:focus {
   }
 }
 
+.check-out {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 72px;
+}
 .check-out img {
   border-radius: 1rem 1rem 0px 0px;
 }
 .check-out table {
   width: 100%;
-  margin-bottom: 72px;
 }
 .check-out table tr {
   display: flex;
@@ -10859,4 +10864,19 @@ input:focus {
 }
 .check-out table tr:nth-child(odd) {
   background-color: #E4E4E4;
+}
+@media screen and (min-width: 710px) {
+  .check-out {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 72px;
+  }
+}
+@media screen and (min-width: 1100px) {
+  .check-out {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 72px;
+    justify-content: center;
+    width: 850px;
+    margin-inline: auto;
+  }
 }/*# sourceMappingURL=main.css.map */
