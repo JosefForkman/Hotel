@@ -67,5 +67,20 @@
             $errors["error"] = $error;
             return $errors;
         }
+
+        function getAllRoom() {
+            $conn = $this->connect("hotel.db");
+
+            $rums = $conn->prepare("SELECT room.id as room_id, url, alt, name, description, price FROM imgage JOIN room ON imgage.roomId = room.id");
+            $rums->execute();
+            return $rums->fetchAll(PDO::FETCH_ASSOC);
+        }
+        function getRoom(int $id) {
+            $conn = $this->connect("hotel.db");
+
+            $rums = $conn->prepare("SELECT url, alt, name, description, price FROM imgage JOIN room ON imgage.roomId = room.id WHERE room.id = $id");
+            $rums->execute();
+            return $rums->fetch(PDO::FETCH_ASSOC);
+        }
     }
 ?>
