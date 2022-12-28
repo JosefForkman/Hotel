@@ -8,6 +8,7 @@
         function add($imgFile, string $alt, string $name, string $description, int $price) {
             $error = [];
             $errors = [];
+            $conn = $this->connect("hotel.db");
 
 
             $file = $imgFile;
@@ -44,21 +45,23 @@
             }
 
             if (empty($error)) {
-                move_uploaded_file($file_temp, $target_file);
-
-                # image insert
-                $image = $this->connect("hotel.db")->prepare("INSERT INTO image (url, alt) VALUES (:url, :alt)");
-                $image->bindParam(":url", $url);
-                $image->bindParam(":alt", $alt);
-                $image->execute();
-
+                // move_uploaded_file($file_temp, $target_file);
                 # room insert
-                $room = $this->connect("hotel.db")->prepare("INSERT INTO room (name, description, price) VALUES (:name, :description, :price)");
+                $room = $conn->prepare("INSERT INTO room (name, description, price) VALUES (:name, :description, :price)");
 
                 $room->bindParam(":name", $name);
                 $room->bindParam(":description", $description);
                 $room->bindParam(":price", $price);
                 $room->execute();
+                $roomId = $conn->lastInsertId();
+
+
+                # image insert
+                $image = $conn->prepare("INSERT INTO imgage (url, alt, roomId) VALUES (:url, :alt, :roomId)");
+                $image->bindParam(":url", $file_name);
+                $image->bindParam(":alt", $alt);
+                $image->bindParam(":roomId", $roomId);
+                $image->execute();
             }
 
             $errors["error"] = $error;
