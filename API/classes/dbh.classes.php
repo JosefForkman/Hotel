@@ -3,7 +3,7 @@
         public function connect (string $dbName) {
             try {
                 # Skapar variablar för DB
-                $dbPath = __DIR__ . '/' . $dbName;
+                $dbPath = dirname(__DIR__, 2) . '/' . $dbName;
                 $db = "sqlite:$dbPath";
 
                 # Skapar anslutning till DB
