@@ -1,9 +1,30 @@
+const urlSearchParams = new URLSearchParams(window.location.search);
+const { rum } = Object.fromEntries(urlSearchParams.entries());
+const startDate = document.querySelector('#startDate');
+const endDate = document.querySelector('#endDate');
+
+const date = new Date()
+
+startDate.textContent = date.getDate();
+endDate.textContent = date.getDate();
+
 const fullCalendarOpt = {
     initialView: 'dayGridMonth',
     selectable: true,
     selectOverlap: false,
-    select: ({endStr, startStr, end, start}) => {
-        console.log({endStr, startStr, end, start});
+    select: ({ end, start }) => {
+
+
+
+        localStorage.setItem("BookDate",JSON.stringify({
+            start,
+            end,
+            rum: parseInt(rum)
+        }));
+
+        startDate.textContent = start.getDate();
+        endDate.textContent = end.getDate() - 1;
+
     },
     locale: 'sv',
     firstDay: 1, // Måndag
@@ -26,27 +47,7 @@ const fullCalendarOpt = {
         center: '',
         right: ''
     },
-    events: [
-        {
-        title:  'Bokad',
-        start:  '2023-01-20T16:11:36.748Z',
-        end: '2023-01-22T16:11:36.748Z',
-        allDay: true
-        },
-        {
-        title:  'Bokad',
-        start:  '2023-01-01',
-        end: '2023-01-06',
-        allDay: true
-        },
-        {
-        title:  'Bokad',
-        start:  '2023-01-08',
-        end: '2023-01-08',
-        allDay: true
-        },
-        // other events here...
-    ],
+    events: `/API/calender/?id=${rum}`,
     eventColor: 'var(--Amaranth-Purplen)'
     }
 

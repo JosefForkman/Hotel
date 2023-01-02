@@ -23,11 +23,11 @@
                         </tr>
                         <tr>
                             <th>Pris</th>
-                            <td>500kr / natt</td>
+                            <td>0kr / natt</td>
                         </tr>
                         <tr>
                             <th>Antal nätter</th>
-                            <td>4st</td>
+                            <td>0st</td>
                         </tr>
                         <tr>
                             <th>Rabatt</th>
@@ -36,7 +36,7 @@
                     </tbody>
                     <tfoot class="text-Amaranth-Purplen">
                             <th>Summa</th>
-                            <td>2 000kr</td>
+                            <td>0kr</td>
                     </tfoot>
                 </table>
             </div>
@@ -46,6 +46,7 @@
                     <label for="name">Namn</label>
                     <input
                         type="text"
+                        name="name"
                         class="text-Gunmetal"
                         id="name"
                         required
@@ -55,17 +56,22 @@
                     <label for="perNr">Person nr (API key)</label>
                     <input
                         type="text"
+                        name="apiKey"
                         class="text-Gunmetal"
                         id="perNr"
                         required
-                        pattern="/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/"
+                        pattern="^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
                         placeholder="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX">
                 </div>
                 <div class="input-grope">
                     <label for="discount">Rabatt</label>
-                    <input type="text" class="text-Gunmetal" id="discount" placeholder="">
+                    <input
+                    type="text"
+                    name="discount"
+                    class="text-Gunmetal"
+                    id="discount">
                 </div>
-                <button type="submit" class="btn bg-Amaranth-Purplen text-Snow">BOKA</button>
+                <button type="submit" class="btn bg-Amaranth-Purplen text-Snow">boka</button>
             </form>
         </main>
 
@@ -73,5 +79,6 @@
             require_once('include/footer.include.php')
         ?>
         <script src="js/index.js"></script>
+        <script src="js/check-out.js"></script>
     </body>
 </html>
