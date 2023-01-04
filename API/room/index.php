@@ -5,9 +5,9 @@
     # Router
     match(true){
         # method ?QueryParams
-        method("get") && isset($_GET["id"]) => get(),
-        method("get")  => getAll(),
-        method("post") &&
+        url("") && method("get") && isset($_GET["id"]) => get(),
+        url("") && method("get")  => getAll(),
+        url("") && method("post") &&
             isset(
                 $_FILES["img"],
                 $_POST['alt'],
@@ -15,6 +15,7 @@
                 $_POST['description'],
                 $_POST['price'])
             => add(),
+        url("/create") && method("get") => "test",
 
         default => notFound()
     };
@@ -27,6 +28,11 @@
 
     function method (string $method): bool {
         return $_SERVER['REQUEST_METHOD'] === strtoupper($method);
+    }
+    function url (string $url): bool {
+        $path = strtolower(str_replace("/api/room", '', parse_url($_SERVER['REQUEST_URI'])['path']));
+        $url = strtolower($url);
+        return $path === $url;
     }
 ?>
 

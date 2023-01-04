@@ -31,7 +31,7 @@
         }
     }
 
-    function add() {
+    function book() {
         $calender = new Calender();
 
         # error

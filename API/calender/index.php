@@ -5,13 +5,13 @@
     # Router
     match(true){
         # method ?QueryParams
-        method("get") && isset($_GET['id']) => get(),
+        url('') && method("get") && isset($_GET['id']) => get(),
 
-        method("post") &&
-        isset($_GET['id']) &&
-        isset($_GET['arrival_date']) &&
-        isset($_GET['departure_date'])
-            => add(),
+        url('/book') && method("post") &&
+            isset($_GET['id']) &&
+            isset($_GET['arrival_date']) &&
+            isset($_GET['departure_date'])
+        => book(),
 
         default => notFound()
     };
@@ -24,6 +24,11 @@
 
     function method (string $method): bool {
         return $_SERVER['REQUEST_METHOD'] === strtoupper($method);
+    }
+    function url(string $url): bool {
+        $path = strtolower(str_replace("/api/room", '', parse_url($_SERVER['REQUEST_URI'])['path']));
+        $url = strtolower($url);
+        return $path === $url;
     }
 ?>
 
