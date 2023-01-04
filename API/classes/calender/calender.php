@@ -59,7 +59,7 @@
                 #  Parse about any English textual datetime description into a Unix timestamp
                 ## Returns a timestamp on success, false otherwise.
                 $input_time = strtotime($date);
-                die(var_dump($input_time));
+                // die(var_dump($input_time));
 
                 if ($input_time === false) return false;
 

@@ -1,5 +1,6 @@
 <?php
     require_once("../classes/calender/calender.php");
+    use GuzzleHttp\Client;
 
     function get() {
         $calender = new Calender();
@@ -59,11 +60,24 @@
 
             $calender->add($arrival_date, $departure_date, $id);
 
-            http_response_code(201);
-            echo json_encode([
-                "arrival-date" => $arrival_date,
-                "departure-date" => $departure_date
+            $client = new Client();
+
+            $createTransferCode = $client->request('POST', 'https://www.yrgopelago.se/centralbank/withdraw', [
+                'form_params' => [
+                    'user' => 'bar',
+                    'api_key' => 'ab14cbb2-f550-46e6-97c2-bb7f0126733e',
+                    'amount' => '10'
+                ]
             ]);
+
+            // // echo $createTransferCode->getBody()->getContents();
+
+
+            http_response_code(201);
+            // echo json_encode([
+            //     "arrival-date" => $arrival_date,
+            //     "departure-date" => $departure_date
+            // ]);
         }
     }
 ?>

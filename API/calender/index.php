@@ -5,7 +5,7 @@
     # Router
     match(true){
         # method ?QueryParams
-        url('') && method("get") && isset($_GET['id']) => get(),
+        url("") && method("get") && isset($_GET['id']) => get(),
 
         url('/book') && method("post") &&
             isset($_GET['id']) &&
@@ -26,7 +26,7 @@
         return $_SERVER['REQUEST_METHOD'] === strtoupper($method);
     }
     function url(string $url): bool {
-        $path = strtolower(str_replace("/api/room", '', parse_url($_SERVER['REQUEST_URI'])['path']));
+        $path = strtolower(str_replace("/api/calender", '', parse_url($_SERVER['REQUEST_URI'])['path']));
         $url = strtolower($url);
         return $path === $url;
     }
