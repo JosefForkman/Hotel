@@ -30,4 +30,40 @@
             echo json_encode($data);
         }
     }
+
+    function add() {
+        $calender = new Calender();
+
+        # error
+        $error = [];
+        $errors = [];
+
+        # form inputs
+        $arrival_date =  $_GET['arrival_date'];
+        $departure_date = $_GET['departure_date'];
+        $id = $_GET['id'];
+
+        # error check
+        if (!$calender->validateDate($arrival_date) || !$calender->validateDate($departure_date)) {
+            array_push($error, "Måste ange en giltig datum i ISO 8601 format");
+        }
+
+        # Respond
+        header("Content-Type: application/json");
+
+        if (count($error) != 0) {
+            http_response_code(400);
+            $error["status_code"] = 400;
+            echo json_encode($error);
+        } else {
+
+            $calender->add($arrival_date, $departure_date, $id);
+
+            http_response_code(201);
+            echo json_encode([
+                "arrival-date" => $arrival_date,
+                "departure-date" => $departure_date
+            ]);
+        }
+    }
 ?>

@@ -6,7 +6,12 @@
     match(true){
         # method ?QueryParams
         method("get") && isset($_GET['id']) => get(),
-        method("post") && isset($_GET['id']) => add(),
+
+        method("post") &&
+        isset($_GET['id']) &&
+        isset($_GET['arrival_date']) &&
+        isset($_GET['departure_date'])
+            => add(),
 
         default => notFound()
     };
