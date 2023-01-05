@@ -1,5 +1,6 @@
 <?php
     require_once("../classes/room/room.php");
+    require_once("../classes/room/features.php");
 
     # Post
     function add() {
@@ -101,10 +102,29 @@
             echo json_encode($data);
         }
     }
+    function getFeature() {
+        $room = new Feature;
+
+        $id = $_GET["id"] ?? "0";
+        $id = htmlspecialchars($id, ENT_QUOTES);
+
+        $data = $room->getFeature((int) $id);
+
+        if (!$data) {
+            echo json_encode([]);
+        } else {
+            echo json_encode($data);
+        }
+    }
 
     function getAll() {
         $room = new Room;
 
         echo json_encode($room->getAllRoom());
+    }
+    function getAllFeatures() {
+        $room = new Feature;
+
+        echo json_encode($room->getAllFeatures());
     }
 ?>
