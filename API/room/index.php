@@ -1,14 +1,16 @@
 <?php
     header("Content-Type: application/json");
     require('function.php');
-    $path = strtolower(str_replace("/API/room", '', parse_url($_SERVER['REQUEST_URI'])['path']));
-    echo $path;
+    // $path = strtolower(str_replace("/API/room", '', parse_url($_SERVER['REQUEST_URI'])['path']));
+    // echo $path;
 
     # Router
     match(true){
         # method ?QueryParams
         url("") && method("get") && isset($_GET["id"]) => get(),
         url("") && method("get")  => getAll(),
+        url("/feature") && method("get") && isset($_GET["id"]) => getFeature(),
+        url("/feature") && method("get")  => getAllFeatures(),
         url("") && method("post") &&
             isset(
                 $_FILES["img"],

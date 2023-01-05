@@ -71,7 +71,7 @@
                     class="text-Gunmetal"
                     id="discount">
                 </div>
-                <button type="submit" class="btn bg-Amaranth-Purplen text-Snow">boka</button>
+                <button type="submit" class="btn bg-Amaranth-Purplen text-Snow">Boka</button>
             </form>
         </main>
 
