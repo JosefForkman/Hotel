@@ -37,7 +37,9 @@
         function getRoom(int $id) {
             $conn = $this->connect("hotel.db");
 
-            $rums = $conn->prepare("SELECT url, alt, name, description, price FROM imgage JOIN room ON imgage.roomId = room.id WHERE room.id = $id");
+            $rums = $conn->prepare("SELECT url, alt, name, description, price FROM imgage JOIN room ON imgage.roomId = room.id WHERE room.id = :id");
+            $rums->bindParam(":id", $id);
+
             $rums->execute();
             return $rums->fetch(PDO::FETCH_ASSOC);
         }
