@@ -1,6 +1,8 @@
 <?php
-    require_once("../classes/calender/calender.php");
-    use GuzzleHttp\Client;
+
+    require_once(dirname(__DIR__, 1) . "/classes/calender/calender.php");
+    require_once(dirname(__DIR__, 1) . "/classes/yrgopelago/api.php");
+
 
     function get() {
         $calender = new Calender();
@@ -34,50 +36,49 @@
 
     function book() {
         $calender = new Calender();
+        $yrgo = new YRGO();
 
         # error
         $error = [];
         $errors = [];
 
         # form inputs
-        $arrival_date =  $_GET['arrival_date'];
-        $departure_date = $_GET['departure_date'];
+        $arrival_date =  $_POST['arrival_date'];
+        $departure_date = $_POST['departure_date'];
+
+        $userName = $_POST['user_name'];
+        $personNr = $_POST['person_nr'];
+        $totalCost = $_POST['totalCost'];
+
         $id = $_GET['id'];
 
         # error check
         if (!$calender->validateDate($arrival_date) || !$calender->validateDate($departure_date)) {
-            array_push($error, "Måste ange en giltig datum i ISO 8601 format");
+                array_push($error, "Måste ange en giltig datum i ISO 8601 format");
+        }
+
+        if (!$yrgo->checkTransferCode($personNr, $totalCost)) {
+            array_push($error, "Måste ange en giltig person nr");
         }
 
         # Respond
-        header("Content-Type: application/json");
 
         if (count($error) != 0) {
             http_response_code(400);
             $error["status_code"] = 400;
             echo json_encode($error);
         } else {
+            $createTransferCode = $yrgo->createTransferCode($personNr, $userName, $totalCost);
 
-            $calender->add($arrival_date, $departure_date, $id);
+            if ($createTransferCode) {
+                $consumeTransferCode = $yrgo->consumeTransferCode($createTransferCode['transferCode']);
+                $calender->add($arrival_date, $departure_date, $id);
 
-            $client = new Client();
-
-            $createTransferCode = $client->request('POST', 'https://www.yrgopelago.se/centralbank/withdraw', [
-                'form_params' => [
-                    'user' => 'bar',
-                    'api_key' => 'ab14cbb2-f550-46e6-97c2-bb7f0126733e',
-                    'amount' => '10'
-                ]
-            ]);
-
-            // // echo $createTransferCode->getBody()->getContents();
-
-
-            http_response_code(201);
-            // echo json_encode([
-            //     "arrival-date" => $arrival_date,
-            //     "departure-date" => $departure_date
-            // ]);
+                http_response_code(201);
+                echo json_encode([
+                    "arrival-date" => $arrival_date,
+                    "departure-date" => $departure_date
+                ]);
+            }
         }
     }
-?>
