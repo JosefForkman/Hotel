@@ -2,6 +2,7 @@
 
     require_once(dirname(__DIR__, 1) . "/classes/calender/calender.php");
     require_once(dirname(__DIR__, 1) . "/classes/yrgopelago/api.php");
+    require_once(dirname(__DIR__, 1) . "/classes/room/features.php");
 
 
     function get() {
@@ -37,48 +38,82 @@
     function book() {
         $calender = new Calender();
         $yrgo = new YRGO();
+        $Feature = new Feature();
 
         # error
         $error = [];
         $errors = [];
 
         # form inputs
-        $arrival_date =  $_POST['arrival_date'];
-        $departure_date = $_POST['departure_date'];
-
-        $userName = $_POST['user_name'];
-        $personNr = $_POST['person_nr'];
-        $totalCost = $_POST['totalCost'];
-
         $id = $_GET['id'];
 
-        # error check
-        if (!$calender->validateDate($arrival_date) || !$calender->validateDate($departure_date)) {
+        if (isset($_POST['arrival_date']) && isset($_POST['departure_date']) && isset($_POST['user_name']) && isset($_POST['person_nr']) && isset($_POST['totalCost'])) {
+
+            $arrival_date =  $_POST['arrival_date'];
+            $departure_date = $_POST['departure_date'];
+            $userName = $_POST['user_name'];
+            $personNr = $_POST['person_nr'];
+            $totalCost = $_POST['totalCost'];
+
+            # error check
+            if (!$calender->validateDate($arrival_date) || !$calender->validateDate($departure_date)) {
                 array_push($error, "Måste ange en giltig datum i ISO 8601 format");
-        }
-
-        if (!$yrgo->checkTransferCode($personNr, $totalCost)) {
-            array_push($error, "Måste ange en giltig person nr");
-        }
-
-        # Respond
-
-        if (count($error) != 0) {
-            http_response_code(400);
-            $error["status_code"] = 400;
-            echo json_encode($error);
-        } else {
-            $createTransferCode = $yrgo->createTransferCode($personNr, $userName, $totalCost);
-
-            if ($createTransferCode) {
-                $consumeTransferCode = $yrgo->consumeTransferCode($createTransferCode['transferCode']);
-                $calender->add($arrival_date, $departure_date, $id);
-
-                http_response_code(201);
-                echo json_encode([
-                    "arrival-date" => $arrival_date,
-                    "departure-date" => $departure_date
-                ]);
             }
+
+
+            if (!$yrgo->checkTransferCode($personNr, $totalCost)) {
+                array_push($error, "Måste ange en giltig person nr");
+            }
+
+            # Respond
+
+            if (count($error) != 0) {
+                http_response_code(400);
+                $error["status_code"] = 400;
+
+                echo json_encode($error);
+            } else {
+                # Skapar Transfer code
+                $createTransferCode = $yrgo->createTransferCode($personNr, $userName, $totalCost);
+
+                $errors['error'] = $error;
+                if ($createTransferCode) {
+                    # Gör betalningen
+                    // $yrgo->consumeTransferCode($createTransferCode['transferCode']);
+
+                    # Lägger till bokningen i kalendern
+                    // $calender->add($arrival_date, $departure_date, $id);
+
+                    # Tar fram alla "Features"
+                    $feature = $Feature->getFeature($id);
+
+
+                    $arrival_date = new DateTimeImmutable($arrival_date);
+                    $arrival_date = $arrival_date->format('Y-m-d');
+
+                    $departure_date = new DateTimeImmutable($departure_date);
+                    $departure_date = $departure_date->format('Y-m-d');
+
+                    http_response_code(201);
+                    echo json_encode([
+                        "island" => "Josef island",
+                        "hotel" => "Budget hostel",
+                        "arrival-date" => $arrival_date,
+                        "departure-date" => $departure_date,
+                        "total_cost" => $totalCost,
+                        "stars" => "4",
+                        "features" => $feature,
+                        "addtional_info" => []
+                    ]);
+                }
+            }
+        } else {
+            http_response_code(404);
+            $errors["status_code"] = 404;
+            array_push($error, "Måste ange alla värdena namn, person nr, total kostnad startdatum och slutdatum");
+
+            // array_push($errors['error'], $error);
+            $errors['error'] = $error;
+            echo json_encode($errors);
         }
     }
