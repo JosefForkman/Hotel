@@ -1,5 +1,5 @@
 
-fetch(`/API/room/?id=${rum}`)
+fetch(`/API/room?id=${rum}`)
 .then(respond => respond.json())
 .then(rum => {
     console.log(rum);

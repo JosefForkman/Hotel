@@ -7,7 +7,7 @@ const error = []
 const id = JSON.parse(localStorage.getItem('BookDate'));
 
 /* fetch data to summary */
-fetch(`/API/room/?id=${id.rum}`)
+fetch(`/API/room?id=${id.rum}`)
     .then(data => data.json())
     .then(respond => {
         console.log(respond);

@@ -1,8 +1,9 @@
 const boende = document.querySelector('.boende');
 
-fetch("/API/room/")
+fetch("/API/room")
     .then(respond => respond.json())
     .then(data => {
+        console.log(data);
         data.forEach(rum => {
             console.log(rum);
             /* Make all article element */
