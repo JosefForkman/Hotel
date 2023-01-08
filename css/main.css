@@ -10467,6 +10467,10 @@ input {
   font-size: 0.85rem;
 }
 
+pre {
+  font-size: 1.1rem;
+}
+
 nav ul a {
   font-size: 1.5rem;
   font-weight: 600;
@@ -10664,7 +10668,7 @@ header nav ul {
   align-items: center;
   gap: 1.5rem;
 }
-header button {
+header .btn {
   font-size: 1.5rem !important;
   display: none !important;
 }
@@ -10675,7 +10679,7 @@ header.active {
 header.active nav {
   display: block;
 }
-header.active button {
+header.active .btn {
   display: inline-block !important;
 }
 @media screen and (min-width: 810px) {
@@ -10693,7 +10697,7 @@ header.active button {
   header nav ul {
     flex-direction: row;
   }
-  header button {
+  header .btn {
     display: inline-block !important;
   }
 }
@@ -10865,6 +10869,21 @@ input:focus {
 .check-out table tr:nth-child(odd) {
   background-color: #E4E4E4;
 }
+.check-out .Bekraftelse h2 {
+  margin-bottom: 0.5em;
+}
+.check-out .Bekraftelse pre {
+  background-color: #E4E4E4;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 1em 0.5em;
+  border-radius: 0.5em;
+}
+.check-out .Bekraftelse pre.active {
+  -webkit-animation: bekraftelseActive 2.5s 1 ease-in-out;
+          animation: bekraftelseActive 2.5s 1 ease-in-out;
+}
 @media screen and (min-width: 710px) {
   .check-out {
     grid-template-columns: repeat(2, 1fr);
@@ -10876,7 +10895,43 @@ input:focus {
     grid-template-columns: repeat(2, 1fr);
     gap: 72px;
     justify-content: center;
-    width: 850px;
+    width: 860px;
     margin-inline: auto;
+  }
+}
+
+@-webkit-keyframes bekraftelseActive {
+  0% {
+    background-color: #E4E4E4;
+  }
+  25% {
+    background-color: var(--Russian-Green);
+  }
+  50% {
+    background-color: #E4E4E4;
+  }
+  75% {
+    background-color: var(--Russian-Green);
+  }
+  100% {
+    background-color: #E4E4E4;
+  }
+}
+
+@keyframes bekraftelseActive {
+  0% {
+    background-color: #E4E4E4;
+  }
+  25% {
+    background-color: var(--Russian-Green);
+  }
+  50% {
+    background-color: #E4E4E4;
+  }
+  75% {
+    background-color: var(--Russian-Green);
+  }
+  100% {
+    background-color: #E4E4E4;
   }
 }/*# sourceMappingURL=main.css.map */

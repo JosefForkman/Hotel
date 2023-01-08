@@ -2,17 +2,11 @@
     header("Content-Type: application/json");
     require('function.php');
 
-    $path = strtolower(str_replace("/API/calender", '', parse_url($_SERVER['REQUEST_URI'])['path']));
-    // die(var_dump($path));
-
     # Router
     match(true){
         # method ?QueryParams
         url("") && method("get") && isset($_GET['id']) => get(),
-
-        url('/book') && method("post") &&
-            isset($_GET['id'])
-        => book(),
+        url('/book') && method("post") && isset($_GET['id']) => book(),
 
         default => notFound()
     };

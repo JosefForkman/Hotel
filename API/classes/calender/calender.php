@@ -41,10 +41,12 @@
                 $minute = (int) explode(":", $parts[13])[1];
                 $second = (int) explode(":", $parts[14])[1];
 
+
                 # datum
                 $year = (int) $parts[1];
                 $month = (int) explode("-", $parts[4])[0];
                 $day = (int) explode("-", $parts[4])[1];
+
 
                 # Ger Unix timestamp av en GMT datum
                 $time = gmmktime(
@@ -56,10 +58,10 @@
                     $year # year
                 );
 
+
                 #  Parse about any English textual datetime description into a Unix timestamp
                 ## Returns a timestamp on success, false otherwise.
                 $input_time = strtotime($date);
-                // die(var_dump($input_time));
 
                 if ($input_time === false) return false;
 

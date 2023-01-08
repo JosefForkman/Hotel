@@ -1,8 +1,6 @@
 <?php
     header("Content-Type: application/json");
     require('function.php');
-    // $path = strtolower(str_replace("/API/room", '', parse_url($_SERVER['REQUEST_URI'])['path']));
-    // echo $path;
 
     # Router
     match(true){
@@ -26,7 +24,7 @@
     # helper function to router
     function notFound () {
         http_response_code(400);
-        echo json_encode(["message" => "We don`t supeort the request", "help" => "Perhaps you missing a Query Prams"]);
+        echo json_encode(["message" => "We don`t supeort the request you are making", "help" => "Perhaps you missing a Query Prams"]);
     }
 
     function method (string $method): bool {

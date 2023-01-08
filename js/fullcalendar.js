@@ -1,13 +1,17 @@
 const urlSearchParams = new URLSearchParams(window.location.search);
 const { rum } = Object.fromEntries(urlSearchParams.entries());
+
 const startDate = document.querySelector('#startDate');
 const endDate = document.querySelector('#endDate');
 
+/* Skapar en datum om användaren inte väljer något i kalendern */
 const date = new Date()
 
 startDate.textContent = date.getDate();
 endDate.textContent = date.getDate();
 
+/* fullCalendar option */
+/* För att se mer om fullCalendar https://fullcalendar.io/ */
 const fullCalendarOpt = {
     initialView: 'dayGridMonth',
     selectable: true,
@@ -51,6 +55,7 @@ const fullCalendarOpt = {
     eventColor: 'var(--Amaranth-Purplen)'
     }
 
+/* Lägger till fullCalendar på rum.php */
 document.addEventListener('DOMContentLoaded', function() {
     let calendarEl = document.getElementById('calendar');
     let calendar = new FullCalendar.Calendar(calendarEl, fullCalendarOpt);

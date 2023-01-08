@@ -3,9 +3,7 @@ const boende = document.querySelector('.boende');
 fetch("/API/room")
     .then(respond => respond.json())
     .then(data => {
-        console.log(data);
         data.forEach(rum => {
-            console.log(rum);
             /* Make all article element */
             const articleContainer = document.createElement('div');
             const buttonContainer = document.createElement('div');

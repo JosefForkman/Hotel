@@ -79,10 +79,10 @@
                 $errors['error'] = $error;
                 if ($createTransferCode) {
                     # Gör betalningen
-                    // $yrgo->consumeTransferCode($createTransferCode['transferCode']);
+                    $yrgo->consumeTransferCode($createTransferCode['transferCode']);
 
                     # Lägger till bokningen i kalendern
-                    // $calender->add($arrival_date, $departure_date, $id);
+                    $calender->add($arrival_date, $departure_date, $id);
 
                     # Tar fram alla "Features"
                     $feature = $Feature->getFeature($id);
@@ -98,11 +98,11 @@
                     echo json_encode([
                         "island" => "Josef island",
                         "hotel" => "Budget hostel",
-                        "arrival-date" => $arrival_date,
-                        "departure-date" => $departure_date,
+                        "arrival_date" => $arrival_date,
+                        "departure_date" => $departure_date,
                         "total_cost" => $totalCost,
                         "stars" => "4",
-                        "features" => $feature,
+                        "features" => $feature ? $feature : [],
                         "addtional_info" => []
                     ]);
                 }
@@ -112,7 +112,6 @@
             $errors["status_code"] = 404;
             array_push($error, "Måste ange alla värdena namn, person nr, total kostnad startdatum och slutdatum");
 
-            // array_push($errors['error'], $error);
             $errors['error'] = $error;
             echo json_encode($errors);
         }

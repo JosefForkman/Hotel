@@ -9,7 +9,6 @@
 
         # error
         $error = [];
-        $errors = [];
 
         # form inputs
         $alt = htmlspecialchars(trim($_POST['alt']) , ENT_QUOTES) ;
@@ -102,6 +101,7 @@
             echo json_encode($data);
         }
     }
+    
     function getFeature() {
         $room = new Feature;
 

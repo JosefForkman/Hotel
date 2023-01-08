@@ -46,7 +46,7 @@
                     <label for="name">Namn</label>
                     <input
                         type="text"
-                        name="name"
+                        name="user_name"
                         class="text-Gunmetal"
                         id="name"
                         required
@@ -56,7 +56,7 @@
                     <label for="perNr">Person nr (API key)</label>
                     <input
                         type="text"
-                        name="apiKey"
+                        name="person_nr"
                         class="text-Gunmetal"
                         id="perNr"
                         required
@@ -73,6 +73,22 @@
                 </div>
                 <button type="submit" class="btn bg-Amaranth-Purplen text-Snow">Boka</button>
             </form>
+
+            <session class="Bekraftelse">
+                <h2 class="text-Amaranth-Purplen">Bekräftelse info</h2>
+<pre class="text-Gunmetal">
+{
+    "<span class="text-Amaranth-Purplen">island</span>": "<span id="island"></span>",
+    "<span class="text-Amaranth-Purplen">hotel</span>": "<span id="hotel"></span>",
+    "<span class="text-Amaranth-Purplen">arrival-date</span>": "<span id="arrival_date"></span>",
+    "<span class="text-Amaranth-Purplen">departure-date</span>": "<span id="departure_date"></span>",
+    "<span class="text-Amaranth-Purplen">total_cost</span>": "<span id="total_cost"></span>",
+    "<span class="text-Amaranth-Purplen">stars</span>": "<span id="stars"></span>",
+    "<span class="text-Amaranth-Purplen">features</span>": <span id="features">[]</span>,
+    "<span class="text-Amaranth-Purplen">addtional_info</span>": <span id="info">[]</span>
+}
+</pre>
+            </session>
         </main>
 
         <?php

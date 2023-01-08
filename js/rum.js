@@ -2,7 +2,23 @@
 fetch(`/API/room?id=${rum}`)
 .then(respond => respond.json())
 .then(rum => {
-    console.log(rum);
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        const rumid = Object.fromEntries(urlSearchParams.entries());
+
+        /* Date */
+        const start = new Date();
+        start.setHours(0)
+        start.setMinutes(0)
+        start.setSeconds(0)
+        start.setMilliseconds(0)
+
+        const end = new Date();
+        end.setHours(0)
+        end.setMinutes(0)
+        end.setSeconds(0)
+        end.setMilliseconds(0)
+
+
         /* Make all article element */
         const introduktion = document.querySelector('.introduktion');
 
@@ -19,4 +35,11 @@ fetch(`/API/room?id=${rum}`)
         p.textContent = rum.description;
 
         h2.textContent = `${rum.price}kr / natt`;
+
+        // Add to localStorage
+        localStorage.setItem("BookDate",JSON.stringify({
+            start: start.toISOString(),
+            end: end.toISOString(),
+            rum: parseInt(rumid.rum)
+        }));
     })
