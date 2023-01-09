@@ -3,6 +3,10 @@
     <head>
         <meta charset='UTF-8'>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- FontAwesome -->
+        <script src="https://kit.fontawesome.com/a913f4ac89.js" crossorigin="anonymous"></script>
+
         <link rel='stylesheet' href='css/main.css'>
 
         <title>Hotel</title>
@@ -80,8 +84,8 @@
 {
     "<span class="text-Amaranth-Purplen">island</span>": "<span id="island"></span>",
     "<span class="text-Amaranth-Purplen">hotel</span>": "<span id="hotel"></span>",
-    "<span class="text-Amaranth-Purplen">arrival-date</span>": "<span id="arrival_date"></span>",
-    "<span class="text-Amaranth-Purplen">departure-date</span>": "<span id="departure_date"></span>",
+    "<span class="text-Amaranth-Purplen">arrival_date</span>": "<span id="arrival_date"></span>",
+    "<span class="text-Amaranth-Purplen">departure_date</span>": "<span id="departure_date"></span>",
     "<span class="text-Amaranth-Purplen">total_cost</span>": "<span id="total_cost"></span>",
     "<span class="text-Amaranth-Purplen">stars</span>": "<span id="stars"></span>",
     "<span class="text-Amaranth-Purplen">features</span>": <span id="features">[]</span>,
