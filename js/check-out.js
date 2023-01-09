@@ -8,7 +8,7 @@ const id = JSON.parse(localStorage.getItem('BookDate'));
 
 /* fetch data to summary */
 const roomSummary = async (id) => {
-    let summary = await fetch(`/API/room?id=${id}`);
+    let summary = await fetch(`API/room?id=${id}`);
     summary = await summary.json()
     return summary;
 }
@@ -21,9 +21,9 @@ const antalNätter = end.getDate() == start.getDate()? 1 : end.getDate() - start
 /* Fuller i sammanfattningen för köpet */
 roomSummary(id.rum).then(res => {
     rum.textContent = res.name
-    pris.textContent = `${res.price}kr / natt`;
+    pris.textContent = `${res.price}$ / natt`;
     antal.textContent = `${antalNätter}st`;
-    summa.textContent = `${new Intl.NumberFormat().format(res.price * antalNätter)}kr`
+    summa.textContent = `${new Intl.NumberFormat().format(res.price * antalNätter)}$`
 })
 
 
@@ -40,7 +40,7 @@ form.addEventListener('submit', async e => {
         formData.delete('discount')
         formData.append('totalCost', room.price * antalNätter);
 
-        let book = await fetch(`/API/calender/book?id=${id.rum}`, {
+        let book = await fetch(`API/calender/book?id=${id.rum}`, {
             method: 'POST',
             body: formData
         })

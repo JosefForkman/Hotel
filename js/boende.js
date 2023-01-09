@@ -1,6 +1,6 @@
 const boende = document.querySelector('.boende');
 
-fetch("/API/room")
+fetch("API/room")
     .then(respond => respond.json())
     .then(data => {
         data.forEach(rum => {

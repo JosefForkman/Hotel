@@ -31,7 +31,7 @@
             </section>
 
             <div class="boka bg-Russian-Green">
-                <h2 class="text-Snow">500kr / natt</h2>
+                <h2 class="text-Snow">0$ / natt</h2>
                 <p class="text-Snow"><span id="startDate">1</span> Jan - <span id="endDate">5</span> Jan</p>
                 <a href="check-out.php" class="btn bg-Amaranth-Purplen text-Snow">Boka</a>
             </div>

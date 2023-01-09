@@ -27,7 +27,7 @@
                         </tr>
                         <tr>
                             <th>Pris</th>
-                            <td>0kr / natt</td>
+                            <td>0$ / natt</td>
                         </tr>
                         <tr>
                             <th>Antal nätter</th>
@@ -35,12 +35,12 @@
                         </tr>
                         <tr>
                             <th>Rabatt</th>
-                            <td>0kr</td>
+                            <td>0$</td>
                         </tr>
                     </tbody>
                     <tfoot class="text-Amaranth-Purplen">
                             <th>Summa</th>
-                            <td>0kr</td>
+                            <td>0$</td>
                     </tfoot>
                 </table>
             </div>

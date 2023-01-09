@@ -51,7 +51,7 @@ const fullCalendarOpt = {
         center: '',
         right: ''
     },
-    events: `/API/calender?id=${rum}`,
+    events: `API/calender?id=${rum}`,
     eventColor: 'var(--Amaranth-Purplen)'
     }
 

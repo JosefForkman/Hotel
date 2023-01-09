@@ -1,5 +1,5 @@
 
-fetch(`/API/room?id=${rum}`)
+fetch(`API/room?id=${rum}`)
 .then(respond => respond.json())
 .then(rum => {
         const urlSearchParams = new URLSearchParams(window.location.search);
@@ -34,7 +34,7 @@ fetch(`/API/room?id=${rum}`)
         span.textContent = rum.name;
         p.textContent = rum.description;
 
-        h2.textContent = `${rum.price}kr / natt`;
+        h2.textContent = `${rum.price}$ / natt`;
 
         // Add to localStorage
         localStorage.setItem("BookDate",JSON.stringify({
