@@ -30,6 +30,10 @@
                             <td>0$ / natt</td>
                         </tr>
                         <tr>
+                            <th>Förmåner</th>
+                            <td>0$</td>
+                        </tr>
+                        <tr>
                             <th>Antal nätter</th>
                             <td>0st</td>
                         </tr>

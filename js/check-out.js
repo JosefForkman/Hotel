@@ -1,4 +1,4 @@
-const [ rum, pris, antal, rabatt, summa ] = document.querySelectorAll('table tr td');
+const [ rum, pris, förmåner, antal, rabatt, summa ] = document.querySelectorAll('table tr td');
 const form = document.querySelector('form');
 const inputs = form.querySelectorAll('input');
 const pre = document.querySelector('pre');
@@ -24,6 +24,9 @@ roomSummary(id.rum).then(res => {
     pris.textContent = `${res.price}$ / natt`;
     antal.textContent = `${antalNätter}st`;
     summa.textContent = `${new Intl.NumberFormat().format(res.price * antalNätter)}$`
+    förmåner.textContent = res.features.reduce( (accumulator, currentValue) => {
+        return accumulator += currentValue.price
+    }, 0) + "$"
 })
 
 
@@ -33,12 +36,16 @@ form.addEventListener('submit', async e => {
 
     try {
         const room = await roomSummary(id.rum);
+        let featureTotalPrice = res.features.reduce( (accumulator, currentValue) => {
+            return accumulator += currentValue.price
+        }, 0)
+
 
         const formData = new FormData(e.target);
         formData.append('arrival_date', id.start);
         formData.append('departure_date', id.end);
         formData.delete('discount')
-        formData.append('totalCost', room.price * antalNätter);
+        formData.append('totalCost', (room.price * antalNätter) + featureTotalPrice);
 
         let book = await fetch(`API/calender/book?id=${id.rum}`, {
             method: 'POST',

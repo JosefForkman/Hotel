@@ -86,11 +86,16 @@
     # Get room
     function get() {
         $room = new Room;
+        $Feature = new Feature;
 
         $id = $_GET["id"] ?? "0";
         $id = htmlspecialchars($id, ENT_QUOTES);
 
         $data = $room->getRoom((int) $id);
+
+        /* Add feature array */
+        $feature = $Feature->getFeature($id);
+        $data['features'] = $feature? $feature : [];
 
         if (!$data) {
             http_response_code(404);
@@ -101,7 +106,7 @@
             echo json_encode($data);
         }
     }
-    
+
     function getFeature() {
         $room = new Feature;
 

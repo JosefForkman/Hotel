@@ -79,14 +79,23 @@
                 $errors['error'] = $error;
                 if ($createTransferCode) {
                     # Gör betalningen
-                    $yrgo->consumeTransferCode($createTransferCode['transferCode']);
+                    // $yrgo->consumeTransferCode($createTransferCode['transferCode']);
 
                     # Lägger till bokningen i kalendern
-                    $calender->add($arrival_date, $departure_date, $id);
+                    // $calender->add($arrival_date, $departure_date, $id);
 
                     # Tar fram alla "Features"
                     $feature = $Feature->getFeature($id);
+                    $feature = $feature ? $feature : [];
 
+
+                    $feature = array_map(function($item) {
+                        return [
+                            "name" => $item['name'],
+                            "price" => $item['price']
+                        ];
+                    }, $feature);
+                    die(json_encode($feature));
 
                     $arrival_date = new DateTimeImmutable($arrival_date);
                     $arrival_date = $arrival_date->format('Y-m-d');
@@ -102,7 +111,7 @@
                         "departure_date" => $departure_date,
                         "total_cost" => $totalCost,
                         "stars" => "4",
-                        "features" => $feature ? $feature : [],
+                        "features" => $feature,
                         "addtional_info" => []
                     ]);
                 }

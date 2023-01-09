@@ -14,11 +14,11 @@
         function getFeature(int $id) {
             $conn = $this->connect("hotel.db");
 
-            $feature = $conn->prepare("SELECT name, description, price FROM features JOIN feature ON features.roomId = feature.id WHERE feature.id  = :id");
+            $feature = $conn->prepare("SELECT name, description, price FROM features JOIN feature ON features.roomId = feature.id WHERE features.roomId  = :id");
             $feature->bindParam(':id', $id);
 
             $feature->execute();
-            return $feature->fetch(PDO::FETCH_ASSOC);
+            return $feature->fetchAll(PDO::FETCH_ASSOC);
         }
     }
 ?>
