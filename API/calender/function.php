@@ -95,7 +95,7 @@
                             "price" => $item['price']
                         ];
                     }, $feature);
-                    die(json_encode($feature));
+                    // die(json_encode($feature));
 
                     $arrival_date = new DateTimeImmutable($arrival_date);
                     $arrival_date = $arrival_date->format('Y-m-d');

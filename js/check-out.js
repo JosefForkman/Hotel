@@ -18,15 +18,18 @@ const start = new Date(id.start);
 const end = new Date(id.end);
 const antalNätter = end.getDate() == start.getDate()? 1 : end.getDate() - start.getDate();
 
+
 /* Fuller i sammanfattningen för köpet */
 roomSummary(id.rum).then(res => {
+    const förmånersPris = res.features.reduce( (accumulator, currentValue) => {
+        return accumulator += currentValue.price
+    }, 0)
+
     rum.textContent = res.name
     pris.textContent = `${res.price}$ / natt`;
     antal.textContent = `${antalNätter}st`;
-    summa.textContent = `${new Intl.NumberFormat().format(res.price * antalNätter)}$`
-    förmåner.textContent = res.features.reduce( (accumulator, currentValue) => {
-        return accumulator += currentValue.price
-    }, 0) + "$"
+    summa.textContent = `${new Intl.NumberFormat().format((res.price * antalNätter) + förmånersPris)}$`
+    förmåner.textContent = förmånersPris + "$"
 })
 
 
@@ -36,7 +39,7 @@ form.addEventListener('submit', async e => {
 
     try {
         const room = await roomSummary(id.rum);
-        let featureTotalPrice = res.features.reduce( (accumulator, currentValue) => {
+        let featureTotalPrice = room.features.reduce( (accumulator, currentValue) => {
             return accumulator += currentValue.price
         }, 0)
 
@@ -79,6 +82,6 @@ function fillBekraftelse(data) {
     departureDate.textContent = data.departure_date;
     totalCost.textContent = data.total_cost;
     stars.textContent = data.stars;
-    features.textContent = JSON.stringify(data.features);
-    info.textContent = JSON.stringify(data.addtional_info);
+    features.textContent = JSON.stringify(data.features, null, 2);
+    info.textContent = JSON.stringify(data.addtional_info, null, 2);
 }

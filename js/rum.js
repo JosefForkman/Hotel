@@ -1,3 +1,4 @@
+const förmånerUl = document.querySelector('.förmåner ul')
 
 fetch(`API/room?id=${rum}`)
 .then(respond => respond.json())
@@ -35,6 +36,14 @@ fetch(`API/room?id=${rum}`)
         p.textContent = rum.description;
 
         h2.textContent = `${rum.price}$ / natt`;
+
+        /* make the list of "Förmåner" */
+        rum.features.forEach(feature => {
+            const li = document.createElement('li');
+            li.textContent = feature.name
+            förmånerUl.appendChild(li);
+        })
+
 
         // Add to localStorage
         localStorage.setItem("BookDate",JSON.stringify({

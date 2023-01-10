@@ -401,6 +401,15 @@ input:focus {
   margin-bottom: 0.5rem;
   border-radius: 0.5rem;
 }
+.rum .förmåner h2 {
+  margin-bottom: 0.5em;
+}
+.rum .förmåner ul {
+  padding-left: 1em;
+}
+.rum .förmåner ul li {
+  list-style: disc;
+}
 @media screen and (min-width: 810px) {
   .rum {
     grid-template-columns: repeat(2, 1fr);
@@ -419,6 +428,18 @@ input:focus {
     grid-row: span 2;
     margin-bottom: 0.5rem;
   }
+  .rum .förmåner {
+    grid-row: 3;
+  }
+  .rum .förmåner h2 {
+    margin-bottom: 0.5em;
+  }
+  .rum .boka {
+    grid-row: 2;
+  }
+  .rum .calendar {
+    grid-row: span 2;
+  }
 }
 @media screen and (min-width: 1100px) {
   .rum {
@@ -429,6 +450,10 @@ input:focus {
     justify-self: end;
     -moz-column-gap: 90px;
          column-gap: 90px;
+  }
+  .rum .förmåner {
+    grid-column: 3;
+    grid-row: 3;
   }
   .rum .calendar {
     grid-column: span 2;

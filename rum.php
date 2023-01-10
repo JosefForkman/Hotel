@@ -26,6 +26,11 @@
                 <p>Lorem ipsum dolor sit amet consectetur. Laoreet ac diam sit sit pharetra volutpat. Erat a tincidunt vitae at molestie elit ut. Duis dolor vel id amet volutpat orci ultricies etiam ultrices. Sollicitudin neque sapien eget sodales luctus maecenas feugiat. Arcu nisl lorem pharetra auctor. Sit nibh aliquet a amet netus. Etiam neque mi eu ultricies.</p>
             </section>
 
+            <section class="förmåner">
+                <h2>Förmåner</h2>
+                <ul class="text-Gunmetal"></ul>
+            </section>
+
             <section class="calendar">
                 <div style="font-size: .81rem;" id="calendar"></div>
             </section>

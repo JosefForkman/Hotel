@@ -26,7 +26,7 @@
                             <td>Lyxury</td>
                         </tr>
                         <tr>
-                            <th>Pris</th>
+                            <th>Rum pris</th>
                             <td>0$ / natt</td>
                         </tr>
                         <tr>
