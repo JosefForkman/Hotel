@@ -6,9 +6,13 @@
                 $dbPath = dirname(__DIR__, 2) . '/' . $dbName;
                 $db = "sqlite:$dbPath";
 
+                $option = [
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+                ];
+
                 # Skapar anslutning till DB
-                $conn = new PDO($db);
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $conn = new PDO($db, null, null, $option);
 
                 return $conn;
             } catch(PDOException $e) {

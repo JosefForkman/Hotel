@@ -28,7 +28,7 @@
 
             $calender->execute();
 
-            return $calender->fetchAll(PDO::FETCH_ASSOC);
+            return $calender->fetchAll();
         }
 
 

@@ -32,7 +32,7 @@
 
             $rums = $conn->prepare("SELECT room.id as room_id, url, alt, name, description FROM imgage JOIN room ON imgage.roomId = room.id");
             $rums->execute();
-            return $rums->fetchAll(PDO::FETCH_ASSOC);
+            return $rums->fetchAll();
         }
         function getRoom(int $id) {
             $conn = $this->connect("hotel.db");
@@ -41,7 +41,6 @@
             $rums->bindParam(":id", $id);
 
             $rums->execute();
-            return $rums->fetch(PDO::FETCH_ASSOC);
+            return $rums->fetch();
         }
     }
-?>
