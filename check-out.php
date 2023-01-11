@@ -39,7 +39,7 @@
                         </tr>
                         <tr>
                             <th>Rabatt</th>
-                            <td>0$</td>
+                            <td>0%</td>
                         </tr>
                     </tbody>
                     <tfoot class="text-Amaranth-Purplen">

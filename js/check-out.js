@@ -18,9 +18,36 @@ const start = new Date(id.start);
 const end = new Date(id.end);
 const antalNätter = end.getDate() == start.getDate()? 1 : end.getDate() - start.getDate();
 
+/* Discount event listener */
+/* check if discount is valid */
+inputs[2].addEventListener('change', async e => {
+    try {
+	    let discount = await fetch(`http://localhost:8080/API/discount?name=${inputs[2].value}`);
+        if (discount.ok) {
+            console.log(true);
+            discount = await discount.json();
+            inputs[2].setCustomValidity("");
+            console.log(discount.amount * 100);
+            console.log(rabatt.textContent);
+            rabatt.textContent = `${discount.amount * 100}%`;
+            summa.textContent = `${summa.textContent.split('$')[0] * parseFloat(discount.amount)}$`
+
+        } else {
+            console.log(false);
+            inputs[2].setCustomValidity(`Hittade inte rabatt med "${inputs[2].value}"`);
+        }
+    } catch (error) {
+        if (e.target.value != "") {
+            e.target.setCustomValidity(`Hittade inte rabatt med "${error.error}"`);
+        }
+    }
+})
 
 /* Fuller i sammanfattningen för köpet */
-roomSummary(id.rum).then(res => {
+roomSummary(id.rum).then(async res => {
+    let discount = await fetch(`http://localhost:8080/API/discount?name=${inputs[2].value}`);
+    discount = await discount.json();
+
     const förmånersPris = res.features.reduce( (accumulator, currentValue) => {
         return accumulator += currentValue.price
     }, 0)
@@ -28,7 +55,8 @@ roomSummary(id.rum).then(res => {
     rum.textContent = res.name
     pris.textContent = `${res.price}$ / natt`;
     antal.textContent = `${antalNätter}st`;
-    summa.textContent = `${new Intl.NumberFormat().format((res.price * antalNätter) + förmånersPris)}$`
+
+    summa.textContent = `${new Intl.NumberFormat().format(res.price * antalNätter + förmånersPris)}$`
     förmåner.textContent = förmånersPris + "$"
 })
 
@@ -39,6 +67,12 @@ form.addEventListener('submit', async e => {
 
     try {
         const room = await roomSummary(id.rum);
+
+        let discount = await fetch(`http://localhost:8080/API/discount?name=${inputs[2].value}`);
+	    discount = await discount.json();
+
+        console.log(parseFloat(discount.amount));
+
         let featureTotalPrice = room.features.reduce( (accumulator, currentValue) => {
             return accumulator += currentValue.price
         }, 0)
@@ -48,7 +82,7 @@ form.addEventListener('submit', async e => {
         formData.append('arrival_date', id.start);
         formData.append('departure_date', id.end);
         formData.delete('discount')
-        formData.append('totalCost', (room.price * antalNätter) + featureTotalPrice);
+        formData.append('totalCost', (room.price * antalNätter + featureTotalPrice) * parseFloat(discount.amount));
 
         let book = await fetch(`API/calender/book?id=${id.rum}`, {
             method: 'POST',
