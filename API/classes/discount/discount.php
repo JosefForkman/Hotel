@@ -1,7 +1,7 @@
 <?php
     declare(strict_types=1);
 
-    require_once('../classes/dbh.classes.php');
+    require_once dirname(__DIR__) . "/dbh.classes.php";
 
     class Discount extends Dbh {
         public function add( string $name, string $amount) {

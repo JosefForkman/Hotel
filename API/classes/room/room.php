@@ -1,7 +1,7 @@
 <?php
     declare(strict_types=1);
 
-    require_once('../classes/dbh.classes.php');
+    require_once dirname(__DIR__, 1) . "/dbh.classes.php";
 
     class Room extends dbh {
 

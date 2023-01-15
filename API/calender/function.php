@@ -66,7 +66,6 @@
             }
 
             # Respond
-
             if (count($error) != 0) {
                 http_response_code(400);
                 $error["status_code"] = 400;
@@ -74,15 +73,17 @@
                 echo json_encode($error);
             } else {
                 # Skapar Transfer code
+                // die(var_dump([$personNr, $userName, $totalCost]));
                 $createTransferCode = $yrgo->createTransferCode($personNr, $userName, $totalCost);
+                die(var_dump($createTransferCode ));
 
                 $errors['error'] = $error;
                 if ($createTransferCode) {
                     # Gör betalningen
-                    // $yrgo->consumeTransferCode($createTransferCode['transferCode']);
+                    $yrgo->consumeTransferCode($createTransferCode['transferCode']);
 
                     # Lägger till bokningen i kalendern
-                    // $calender->add($arrival_date, $departure_date, $id);
+                    $calender->add($arrival_date, $departure_date, $id);
 
                     # Tar fram alla "Features"
                     $feature = $Feature->getFeature($id);

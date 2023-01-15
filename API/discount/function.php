@@ -1,5 +1,5 @@
 <?php
-    require_once("../classes/discount/discount.php");
+    require_once dirname(__DIR__) . "/classes/discount/discount.php";
 
     function add() {
         # add room class

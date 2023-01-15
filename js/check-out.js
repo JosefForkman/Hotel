@@ -22,18 +22,14 @@ const antalNätter = end.getDate() == start.getDate()? 1 : end.getDate() - start
 /* check if discount is valid */
 inputs[2].addEventListener('change', async e => {
     try {
-	    let discount = await fetch(`http://localhost:8080/API/discount?name=${inputs[2].value}`);
+	    let discount = await fetch(`API/discount?name=${inputs[2].value}`);
         if (discount.ok) {
-            console.log(true);
             discount = await discount.json();
             inputs[2].setCustomValidity("");
-            console.log(discount.amount * 100);
-            console.log(rabatt.textContent);
             rabatt.textContent = `${discount.amount * 100}%`;
             summa.textContent = `${summa.textContent.split('$')[0] * parseFloat(discount.amount)}$`
 
         } else {
-            console.log(false);
             inputs[2].setCustomValidity(`Hittade inte rabatt med "${inputs[2].value}"`);
         }
     } catch (error) {
@@ -45,7 +41,7 @@ inputs[2].addEventListener('change', async e => {
 
 /* Fuller i sammanfattningen för köpet */
 roomSummary(id.rum).then(async res => {
-    let discount = await fetch(`http://localhost:8080/API/discount?name=${inputs[2].value}`);
+    let discount = await fetch(`API/discount?name=${inputs[2].value}`);
     discount = await discount.json();
 
     const förmånersPris = res.features.reduce( (accumulator, currentValue) => {
@@ -68,10 +64,9 @@ form.addEventListener('submit', async e => {
     try {
         const room = await roomSummary(id.rum);
 
-        let discount = await fetch(`http://localhost:8080/API/discount?name=${inputs[2].value}`);
+        let discount = await fetch(`API/discount?name=${inputs[2].value}`);
 	    discount = await discount.json();
 
-        console.log(parseFloat(discount.amount));
 
         let featureTotalPrice = room.features.reduce( (accumulator, currentValue) => {
             return accumulator += currentValue.price

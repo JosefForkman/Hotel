@@ -1,6 +1,6 @@
 <?php
-    require_once("../classes/room/room.php");
-    require_once("../classes/room/features.php");
+    require_once dirname(__DIR__) . "/classes/room/room.php";
+    require_once dirname(__DIR__) . "/classes/room/features.php";
 
     # Post
     function add() {
