@@ -10,6 +10,12 @@ Why not add some info about the hotel of your dreams?
 
 # Instructions
 
+Added functionality: 
+The header has a new link called "Guestbook" where you can see the hotel owners vacation logbook as well as the hotel's total revenue and revenue per booking. 
+
+- Link to pull request: https://github.com/JosefForkman/Hotel/pull/2
+// [Alfred Unenge - alun0511
+](https://github.com/alun0511)
 If your project requires some installation or similar, please inform your user 'bout it. For instance, if you want a more decent indentation of your .php files, you could edit [.editorconfig]('/.editorconfig').
 
 # Code review
