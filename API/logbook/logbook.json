@@ -1,0 +1,47 @@
+{
+    "vacation": [
+        {
+            "island": "Öööhn",
+            "hotel": "Hoteller?",
+            "arrival_date": "2023-01-01",
+            "departure_date": "2023-01-04",
+            "total_cost": "8",
+            "stars": "2",
+            "features": [{ "name": "Fruit basket for vitamin C", "cost": 1 }],
+            "addtional_info": "Thank you for saving a buck at Budget hostel."
+        },
+        {
+            "island": "Hisingen",
+            "hotel": "Hotel Yrgo",
+            "arrival_date": "2023-01-05",
+            "departure_date": "2023-01-08",
+            "total_cost": "11",
+            "stars": "3",
+            "features": [{ "name": "Pinball machine", "cost": 3 }],
+            "addtional_info": [
+                {
+                    "greeting": "Thank you for choosing Centralhotellet",
+                    "video": "https://www.youtube.com/watch?v=5Ym-k30X5PY"
+                }
+            ]
+        },
+        {
+            "island": "Getterön",
+            "hotel": "Västhotel",
+            "arrival_date": "2023-01-05",
+            "departure_date": "2023-01-08",
+            "total_cost": "11",
+            "stars": "3",
+            "features": [
+                { "name": "Local tour guide", "cost": 3 },
+                { "name": "Breakfast", "cost": 4 }
+            ],
+            "addtional_info": [
+                {
+                    "greeting": "Thank you for choosing Centralhotellet",
+                    "video": "https://www.youtube.com/watch?v=5Ym-k30X5PY"
+                }
+            ]
+        }
+    ]
+}
