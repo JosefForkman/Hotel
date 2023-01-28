@@ -7,6 +7,7 @@
             <li><a class="text-Amaranth-Purplen" href="">Restaurang</a></li>
             <li><a class="text-Amaranth-Purplen" href="">Om oss</a></li>
             <li><a class="text-Amaranth-Purplen" href="">Kontakta</a></li>
+            <li><a class="text-Amaranth-Purplen" href="../logbook.php">Gästdagbok</a></li>
         </ul>
     </nav>
 
