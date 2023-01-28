@@ -1,6 +1,10 @@
 <?php
-    require_once dirname(__DIR__) . "/classes/room/room.php";
-    require_once dirname(__DIR__) . "/classes/room/features.php";
+    declare(strict_types=1);
+
+    require_once dirname(__DIR__, 2) . "/vendor/autoload.php";
+
+    use Josef\Hotel\Feature;
+    use Josef\Hotel\Room;
 
     # Post
     function add() {
@@ -88,8 +92,8 @@
         $room = new Room;
         $Feature = new Feature;
 
-        $id = $_GET["id"] ?? "0";
-        $id = htmlspecialchars($id, ENT_QUOTES);
+        $id = $_GET["id"] ?? 0;
+        $id = (int) htmlspecialchars($id, ENT_QUOTES);
 
         $data = $room->getRoom((int) $id);
 

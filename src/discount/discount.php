@@ -1,7 +1,9 @@
 <?php
     declare(strict_types=1);
+    namespace josef\hotel;
 
-    require_once dirname(__DIR__) . "/dbh.classes.php";
+    use Josef\Hotel\database\Dbh;
+
 
     class Discount extends Dbh {
         public function add( string $name, string $amount) {

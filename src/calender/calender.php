@@ -1,7 +1,9 @@
 <?php
     declare(strict_types=1);
 
-    require_once dirname(__DIR__) . "/dbh.classes.php";
+    namespace josef\hotel;
+
+    use Josef\Hotel\database\Dbh;
 
     class Calender extends dbh {
 

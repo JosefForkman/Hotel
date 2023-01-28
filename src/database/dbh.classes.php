@@ -1,6 +1,12 @@
 <?php
+    declare(strict_types=1);
+    namespace Josef\Hotel\database;
+
+    use PDO;
+    use PDOException;
+
     class Dbh {
-        public function connect (string $dbName) {
+        public function connect (string $dbName): PDO {
             try {
                 # Skapar variablar för DB
                 $dbPath = dirname(__DIR__, 2) . '/' . $dbName;

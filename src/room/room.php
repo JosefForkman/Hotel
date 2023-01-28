@@ -1,7 +1,11 @@
 <?php
     declare(strict_types=1);
+    namespace Josef\Hotel;
 
-    require_once dirname(__DIR__, 1) . "/dbh.classes.php";
+    require_once dirname(__DIR__, 2) . "/vendor/autoload.php";
+
+    use Josef\Hotel\database\Dbh;
+
 
     class Room extends dbh {
 

@@ -1,7 +1,10 @@
 <?php
     declare(strict_types=1);
+    namespace josef\hotel;
 
-    require_once dirname(__DIR__) . "/dbh.classes.php";
+    require_once dirname(__DIR__, 2) . "/vendor/autoload.php";
+
+    use Josef\Hotel\database\Dbh;
 
     class Feature extends dbh {
         function getAllFeatures() {
