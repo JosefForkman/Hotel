@@ -1,6 +1,6 @@
 <?php
     declare(strict_types=1);
-    namespace Josef\Hotel\database;
+    namespace Josef\Hotel\Database;
 
     use PDO;
     use PDOException;

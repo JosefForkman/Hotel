@@ -1,12 +1,11 @@
 <?php
     declare(strict_types=1);
-    namespace josef\hotel;
+    namespace Josef\Hotel;
 
-    require_once dirname(__DIR__, 2) . "/vendor/autoload.php";
+    use Josef\Hotel\Database\Dbh;
 
-    use Josef\Hotel\database\Dbh;
 
-    class Feature extends dbh {
+    class Feature extends Dbh {
         function getAllFeatures() {
             $conn = $this->connect("hotel.db");
 

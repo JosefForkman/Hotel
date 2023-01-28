@@ -111,6 +111,12 @@
         }
     }
 
+    function getAll() {
+        $room = new Room;
+
+        echo json_encode($room->getAllRoom());
+    }
+
     function getFeature() {
         $room = new Feature;
 
@@ -126,11 +132,6 @@
         }
     }
 
-    function getAll() {
-        $room = new Room;
-
-        echo json_encode($room->getAllRoom());
-    }
     function getAllFeatures() {
         $room = new Feature;
 

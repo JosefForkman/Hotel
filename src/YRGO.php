@@ -1,6 +1,6 @@
 <?php
     declare(strict_types=1);
-    namespace josef\hotel;
+    namespace Josef\Hotel;
 
     use GuzzleHttp\Client;
 

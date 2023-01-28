@@ -1,9 +1,9 @@
 <?php
     declare(strict_types=1);
 
-    namespace josef\hotel;
+    namespace Josef\Hotel;
 
-    use Josef\Hotel\database\Dbh;
+    use Josef\Hotel\Database\Dbh;
 
     class Calender extends dbh {
 

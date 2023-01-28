@@ -1,5 +1,8 @@
 <?php
-    require_once dirname(__DIR__) . "/classes/discount/discount.php";
+    declare(strict_types=1);
+    use Josef\Hotel\Discount;
+
+    require_once dirname(__DIR__, 2) . "/vendor/autoload.php";
 
     function add() {
         # add room class
