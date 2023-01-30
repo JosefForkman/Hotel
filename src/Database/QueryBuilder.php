@@ -26,38 +26,34 @@ class QueryBuilder {
         return $this;
     }
 
-    public function limit(int $offset, int $row_count)
-    {
+    public function limit(int $offset, int $row_count) {
         $this->query = sprintf("%s LIMIT %s, %s", $this->query, $offset, $row_count);
 
         return $this;
     }
-    public function where(string $table_name, string $condition, string $equal_to)
-    {
+    public function where(string $table_name, string $condition, string $equal_to) {
         $this->query = sprintf("%s WHERE %s %s %s", $this->query, $table_name, $condition, $equal_to);
 
         return $this;
     }
 
-    public function orderBy(string $column, string $direction)
-    {
+    public function orderBy(string $column, string $direction) {
         $this->query = sprintf("%s ORDER BY %s %s", $this->query, $column, $direction);
 
         return $this;
     }
-    public function groupBy(array $column)
-    {
+    public function groupBy(array $column) {
         $grops = implode(', ', $column);
         $this->query = sprintf("%s groupBy %s", $this->query, $grops);
 
         return $this;
     }
 
-    public function get(): array
+    public function get(array $query = []): array
     {
         $statement = $this->database->prepare($this->query);
 
-        $statement->execute();
+        $statement->execute($query);
 
         if ($result = $statement->fetchAll(PDO::FETCH_CLASS)) {
             return $result;
@@ -65,11 +61,11 @@ class QueryBuilder {
 
         return [];
     }
-    public function first(): object
+    public function first(array $query = []): object
     {
         $statement = $this->database->prepare($this->query);
 
-        $statement->execute();
+        $statement->execute($query);
 
         if ($result = $statement->fetch(PDO::FETCH_OBJ)) {
             return $result;
