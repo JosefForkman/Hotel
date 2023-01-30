@@ -19,8 +19,8 @@ function get() {
 
     $data = array_map(function ($value) {
         return [
-            "start" => $value["arrival_date"],
-            "end" => $value["departure_date"],
+            "start" => $value->arrival_date,
+            "end" => $value->departure_date,
             "title" => "Bokad",
             "allDay" => true
         ];

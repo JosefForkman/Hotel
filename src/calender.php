@@ -26,14 +26,14 @@
             $conn = new QueryBuilder($this->connect("hotel.db"));
 
             // $calender = $conn->prepare("SELECT * FROM reservation WHERE reservation.roomId = :id AND arrival_date >= :arrival_date AND departure_date <= :departure_date;");
-            $calender = $conn->select()->from(Table::$Reservation)->where("roomId", "=", ":id");
-            $calender->bindParam(":id", $id);
-            $calender->bindParam(":arrival_date", $arrival_date);
-            $calender->bindParam(":departure_date", $departure_date);
 
-            $calender->execute();
+            $calender = $conn->select()
+                            ->from(Table::$Reservation)
+                            ->where([ [["roomId", "=", ":id"],"and"], [["arrival_date", ">=", ":arrival_date"],"and"], [["departure_date", "<=", ":departure_date"],""] ])
+                            ->params([":id" => $id, ":arrival_date" => $arrival_date, ":departure_date" => $departure_date])
+                            ->get();
 
-            return $calender->fetchAll();
+            return $calender;
         }
 
 

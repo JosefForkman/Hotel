@@ -6,6 +6,7 @@ use PDO;
 
 class QueryBuilder {
     private string $query;
+    private array $param = [];
 
     public function __construct(
         private PDO $database
@@ -31,8 +32,16 @@ class QueryBuilder {
 
         return $this;
     }
-    public function where(string $table_name, string $condition, string $equal_to) {
-        $this->query = sprintf("%s WHERE %s %s %s", $this->query, $table_name, $condition, $equal_to);
+
+    public function where(array $wheres) {
+        $this->query = sprintf("%s WHERE", $this->query);
+
+        foreach($wheres as $where) {
+            $condition = $where[0];
+            $join = $where[1];
+            # $tableName == $something and
+            $this->query = sprintf("%s %s %s %s %s", $this->query, $condition[0], $condition[1], $condition[2], $join);
+        }
 
         return $this;
     }
@@ -49,11 +58,17 @@ class QueryBuilder {
         return $this;
     }
 
-    public function get(array $query = []): array
+    public function params(array $param)
+    {
+        $this->param = $param;
+        return $this;
+    }
+
+    public function get(): array
     {
         $statement = $this->database->prepare($this->query);
 
-        $statement->execute($query);
+        $statement->execute($this->param);
 
         if ($result = $statement->fetchAll(PDO::FETCH_CLASS)) {
             return $result;
@@ -61,11 +76,11 @@ class QueryBuilder {
 
         return [];
     }
-    public function first(array $query = []): object
+    public function first(): object
     {
         $statement = $this->database->prepare($this->query);
 
-        $statement->execute($query);
+        $statement->execute($this->param);
 
         if ($result = $statement->fetch(PDO::FETCH_OBJ)) {
             return $result;
