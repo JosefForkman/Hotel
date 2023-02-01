@@ -29,7 +29,9 @@
 
             $calender = $conn->select()
                             ->from(Table::$Reservation)
-                            ->where([ [["roomId", "=", ":id"],"and"], [["arrival_date", ">=", ":arrival_date"],"and"], [["departure_date", "<=", ":departure_date"],""] ])
+                            ->where("roomId", "=", ":id")
+                            ->AND("arrival_date", ">=", ":arrival_date")
+                            ->AND("departure_date", "<=", ":departure_date")
                             ->params([":id" => $id, ":arrival_date" => $arrival_date, ":departure_date" => $departure_date])
                             ->get();
 

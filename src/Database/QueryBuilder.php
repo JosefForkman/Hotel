@@ -32,16 +32,21 @@ class QueryBuilder {
 
         return $this;
     }
+    
+    public function where(string $tableName, string $operator, string $equalTo) {
 
-    public function where(array $wheres) {
-        $this->query = sprintf("%s WHERE", $this->query);
+        $this->query = sprintf("%s where %s %s %s", $this->query, $tableName, $operator, $equalTo);
 
-        foreach($wheres as $where) {
-            $condition = $where[0];
-            $join = $where[1];
-            # $tableName == $something and
-            $this->query = sprintf("%s %s %s %s %s", $this->query, $condition[0], $condition[1], $condition[2], $join);
-        }
+        return $this;
+    }
+
+    public function AND(string $tableName, string $operator, string $equalTo) {
+        $this->query = sprintf("%s AND %s %s %s", $this->query, $tableName, $operator, $equalTo);
+
+        return $this;
+    }
+    public function OR(string $tableName, string $operator, string $equalTo) {
+        $this->query = sprintf("%s OR %s %s %s", $this->query, $tableName, $operator, $equalTo);
 
         return $this;
     }
