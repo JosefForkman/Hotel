@@ -4,7 +4,7 @@
 
 use PDO;
 
-class QueryBuilder {
+class selectQuarry {
     private string $query;
     private array $param = [];
 
@@ -20,9 +20,9 @@ class QueryBuilder {
         return $this;
     }
 
-    public function from(string $table): static
+    public function from(Table $table): static
     {
-        $this->query = sprintf('%s FROM %s', $this->query, $table);
+        $this->query = sprintf('%s FROM %s', $this->query, $table->value);
 
         return $this;
     }
@@ -32,7 +32,7 @@ class QueryBuilder {
 
         return $this;
     }
-    
+
     public function where(string $tableName, string $operator, string $equalTo) {
 
         $this->query = sprintf("%s where %s %s %s", $this->query, $tableName, $operator, $equalTo);

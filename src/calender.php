@@ -4,8 +4,8 @@
     namespace Josef\Hotel;
 
     use Josef\Hotel\Database\Dbh;
-    use Josef\Hotel\Database\QueryBuilder;
-    use Josef\Hotel\Database\Table;
+use Josef\Hotel\Database\selectQuarry;
+use Josef\Hotel\Database\Table;
 
     class Calender extends dbh {
 
@@ -23,12 +23,12 @@
 
         function getCalender($arrival_date, $departure_date, int $id) {
             // $conn = $this->connect("hotel.db");
-            $conn = new QueryBuilder($this->connect("hotel.db"));
+            $conn = new selectQuarry($this->connect("hotel.db"));
 
             // $calender = $conn->prepare("SELECT * FROM reservation WHERE reservation.roomId = :id AND arrival_date >= :arrival_date AND departure_date <= :departure_date;");
 
             $calender = $conn->select()
-                            ->from(Table::$Reservation)
+                            ->from(Table::reservation)
                             ->where("roomId", "=", ":id")
                             ->AND("arrival_date", ">=", ":arrival_date")
                             ->AND("departure_date", "<=", ":departure_date")
